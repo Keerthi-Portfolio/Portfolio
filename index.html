@@ -4,11 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Keerthi Sri Pedapudi - Portfolio</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
         /* --- Global Styles & Fonts --- */
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            /* Updated font */
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f9;
@@ -19,14 +24,16 @@
 
         /* --- Navigation Bar --- */
         nav {
-            background-color: #333;
-            color: #fff;
+            background-color: #fff; /* Changed to white */
+            color: #333;
             padding: 1rem 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
             text-align: center;
+            /* Added shadow for depth */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         nav ul {
@@ -42,21 +49,24 @@
         }
 
         nav ul li a {
-            color: #fff;
+            color: #333; /* Changed link color */
             text-decoration: none;
             font-weight: bold;
             padding: 5px 10px;
             border-radius: 5px;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         nav ul li a:hover {
-            background-color: #555;
+            background-color: #f0f0f0;
+            color: #4a69bd;
         }
 
         /* --- Header (Hero Section) --- */
         header {
+            /* Updated to a more vibrant gradient */
             background-color: #4a69bd;
+            background-image: linear-gradient(45deg, #4a69bd 0%, #6f86d6 100%);
             color: #fff;
             text-align: center;
             padding: 150px 20px 100px;
@@ -66,12 +76,15 @@
         header h1 {
             font-size: 3rem;
             margin: 0;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Added text shadow */
         }
 
         header h2 {
             font-size: 1.5rem;
-            font-weight: 300;
+            font-weight: 400; /* Changed from 300 */
             margin-top: 10px;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
 
         header p {
@@ -80,34 +93,46 @@
             font-size: 1.1rem;
         }
         
-        /* --- Profile Image Styling (RE-ADDED) --- */
+        /* --- Profile Image Styling --- */
         .profile-image {
-            width: 180px; /* Adjust size as needed */
-            height: 180px; /* Adjust size as needed */
-            border-radius: 50%; /* Makes the image circular */
-            object-fit: cover; /* Ensures the image covers the area without distortion */
-            margin: 30px auto; /* Adds space above and below, centers horizontally */
-            border: 5px solid #fff; /* White border around the image */
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+            width: 180px; 
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 30px auto;
+            border: 5px solid #fff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
         /* --- General Section Styling --- */
         section {
-            padding: 60px 20px;
-            max-width: 900px;
-            margin: 0 auto;
-            border-bottom: 1px solid #ddd;
-        }
-
-        section:last-of-type {
-            border-bottom: none;
+            /* Increased padding for more space */
+            padding: 80px 20px;
         }
 
         h2 {
             text-align: center;
             font-size: 2.5rem;
-            margin-bottom: 40px;
+            margin-bottom: 50px; /* Increased margin */
             color: #4a69bd;
+            font-weight: 700;
+        }
+
+        /* --- NEW Card Styling --- */
+        .card {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            margin: 0 auto;
+            max-width: 900px;
+            transition: all 0.3s ease;
+        }
+
+        /* NEW Card Hover Effect */
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
         
         /* --- Link Button Style --- */
@@ -115,16 +140,18 @@
             display: inline-block;
             background-color: #4a69bd;
             color: #fff;
-            padding: 8px 15px;
+            padding: 10px 20px; /* Made button bigger */
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 8px; /* Rounded corners */
             font-weight: bold;
             margin-top: 15px;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
         }
         
         .btn-link:hover {
             background-color: #3c5aa6;
+            transform: translateY(-2px); /* Button hover effect */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
         
         /* --- Certificate Link Style --- */
@@ -134,13 +161,19 @@
             color: #4a69bd;
             text-decoration: none;
             margin-left: 10px;
+            transition: color 0.3s ease;
         }
         
         .cert-link:hover {
             text-decoration: underline;
+            color: #3c5aa6;
         }
 
         /* --- Specific Section Styling --- */
+        #skills .card {
+            padding-bottom: 2.5rem; /* More space inside card */
+        }
+        
         #skills ul {
             list-style: none;
             padding: 0;
@@ -155,7 +188,8 @@
             padding: 10px 20px;
             border-radius: 20px;
             font-size: 1.1rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            font-weight: 500; /* Slightly bolder */
         }
 
         #project h3 {
@@ -170,12 +204,27 @@
             margin: 0 auto;
         }
 
+        /* --- NEW Experience Grid Layout --- */
+        .experience-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Two columns */
+            gap: 30px; /* Space between cards */
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
         #experience h3 {
             font-size: 1.4rem;
             color: #333;
             border-left: 4px solid #4a69bd;
             padding-left: 15px;
-            margin-top: 30px;
+            margin-top: 0; /* Removed top margin */
+            margin-bottom: 20px;
+        }
+        
+        #experience .card {
+            width: auto; /* Let grid control width */
+            margin: 0;
         }
 
         #certifications ul {
@@ -184,7 +233,7 @@
         }
 
         #certifications li {
-            margin-bottom: 10px;
+            margin-bottom: 15px; /* Increased spacing */
             font-size: 1.1rem;
         }
 
@@ -193,11 +242,12 @@
             background-color: #333;
             color: #fff;
             text-align: center;
-            padding: 40px 20px;
+            padding: 60px 20px; /* Increased padding */
         }
 
         footer h2 {
             color: #fff;
+            font-weight: 700;
         }
 
         footer p {
@@ -208,13 +258,22 @@
         footer a {
             color: #8ab4f8;
             text-decoration: none;
+            transition: color 0.3s ease;
         }
 
         footer a:hover {
             text-decoration: underline;
+            color: #fff;
         }
 
         /* --- Responsive Design for Mobile Devices --- */
+        @media (max-width: 768px) {
+            /* Stack the grid columns on mobile */
+            .experience-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media (max-width: 600px) {
             header h1 {
                 font-size: 2.5rem;
@@ -252,70 +311,82 @@
 
     <section id="skills">
         <h2>Technical Skills</h2>
-        <ul>
-            <li><b>Operating Systems:</b> Windows</li>
-            <li><b>Programming Languages:</b> C, Python</li>
-            <li><b>Scripting Languages:</b> HTML, CSS</li>
-            <li><b>Database Software:</b> SQL</li>
-            <li><b>Cloud:</b> AWS Foundations</li>
-            <li><b>Certifications:</b> Cisco, AWS</li>
-        </ul>
+        <div class="card">
+            <ul>
+                <li><b>Operating Systems:</b> Windows</li>
+                <li><b>Programming Languages:</b> C, Python</li>
+                <li><b>Scripting Languages:</b> HTML, CSS</li>
+                <li><b>Database Software:</b> SQL</li>
+                <li><b>Cloud:</b> AWS Foundations</li>
+                <li><b>Certifications:</b> Cisco, AWS</li>
+            </ul>
+        </div>
     </section>
 
     <section id="project">
         <h2>Project</h2>
-        
-        <h3>Detection of Ground Holes using Deep Learning for Surveillance</h3>
-        <p>
-            Developed a deep learning model using <b>YOLO (You Only Look Once)</b> to automatically detect ground holes from drone surveillance data. This B.Tech project involved creating a custom 'Ground Pit Image Dataset (GPID)' and <b>achieved over 90% detection accuracy</b>, aiming to improve safety in roads, farms, and construction sites.
-        </p>
-        
-        <div style="text-align: center;">
-            <a href="https://drive.google.com/file/d/1QXp39-O5wcFZ-9ODDVSG887TQkavIchn/view?usp=sharing" class="btn-link" target="_blank">View Full Project Report</a>
+        <div class="card">
+            <h3>Detection of Ground Holes using Deep Learning for Surveillance</h3>
+            <p>
+                Developed a deep learning model using <b>YOLO (You Only Look Once)</b> to automatically detect ground holes from drone surveillance data. This B.Tech project involved creating a custom 'Ground Pit Image Dataset (GPID)' and <b>achieved over 90% detection accuracy</b>, aiming to improve safety in roads, farms, and construction sites.
+            </p>
+            
+            <div style="text-align: center;">
+                <a href="https://drive.google.com/file/d/1QXp39-O5wcFZ-9ODDVSG887TQkavIchn/view?usp=sharing" class="btn-link" target="_blank">View Full Project Report</a>
+            </div>
         </div>
     </section>
 
     <section id="experience">
         <h2>Experience & Education</h2>
-
-        <h3>Internship</h3>
-        <p>
-            <b>YounMinds</b> (June - July 2024)<br>
-            Completed an internship on <b>"Web Development"</b>. Gained hands-on experience in designing and developing responsive web applications using HTML, with a focus on user experience and performance optimization. Commended for being "extremely inquisitive and hardworking."
+        <div class="experience-grid">
             
-            <br>
-            <a href="https://drive.google.com/file/d/1Uqk-LNNgtxbsimmYj45D1VJIJeFGzauo/view?usp=drive_link" class="cert-link" target="_blank">View Internship Certificate</a>
-        </p>
+            <div class="card">
+                <h3>Internship</h3>
+                <p>
+                    <b>YounMinds</b> (June - July 2024)<br>
+                    Completed an internship on <b>"Web Development"</b>. Gained hands-on experience in designing and developing responsive web applications using HTML, with a focus on user experience and performance optimization. Commended for being "extremely inquisitive and hardworking."
+                    
+                    <br>
+                    <a href="https://drive.google.com/file/d/1Uqk-LNNgtxbsimmYj45D1VJIJeFGzauo/view?usp=drive_link" class="cert-link" target="_blank">View Internship Certificate</a>
+                </p>
+            </div>
 
-        <h3>Academics</h3>
-        <p>
-            <b>B.Tech - Computer Science and Engineering</b> (Percentage: 60%, April 2025)<br>
-            Rajamahendri Institute of Engineering & Technology (Afflicted by JNTU Kakinada)
-        </p>
-        <p>
-            <b>Intermediate - MPC</b> (Percentage: 69%, April 2021)<br>
-            Sri Chaitanya Junior College
-        </p>
-        <p>
-            <b>SSC</b> (Percentage: 82%, April 2019)<br>
-            Swarna Bharathi EM School
-        </p>
+            <div class="card">
+                <h3>Academics</h3>
+                <p>
+                    <b>B.Tech - Computer Science and Engineering</b> (Percentage: 60%, April 2025)<br>
+                    Rajamahendri Institute of Engineering & Technology (Afflicted by JNTU Kakinada)
+                </p>
+                <p>
+                    <b>Intermediate - MPC</b> (Percentage: 69%, April 2021)<br>
+                    Sri Chaitanya Junior College
+                </p>
+                <p>
+                    <b>SSC</b> (Percentage: 82%, April 2019)<br>
+                    Swarna Bharathi EM School
+                </p>
+            </div>
+
+        </div>
     </section>
 
     <section id="certifications">
         <h2>Certifications</h2>
-        <ul>
-            <li>
-                <b>AWS Academy Graduate</b> - AWS Academy Cloud Foundations (Issued: Oct 2024)
-                <a href="https://drive.google.com/file/d/1KL30tyZ4P_SrGEDIaAWTmkc_CK9wOedt/view?usp=drive_link" class="cert-link" target="_blank">View Certificate</a>
-            </li>
-            <li>
-                <b>Cisco Networking Academy</b> - Python Essentials 1 (Issued: Sep 2024)
-                <a href="https://drive.google.com/file/d/1dIyWH-yLZIHH2gL7xSSev1-f4taLp7lm/view?usp=sharing" class="cert-link" target="_blank">View Certificate</a>
-            </li>
-            <li>Certificated on C - Language at Data Pro.</li>
-            <li>Certificated on Microsoft at Data Pro.</li>
-        </ul>
+        <div class="card">
+            <ul>
+                <li>
+                    <b>AWS Academy Graduate</b> - AWS Academy Cloud Foundations (Issued: Oct 2024)
+                    <a href="https://drive.google.com/file/d/1KL30tyZ4P_SrGEDIaAWTmkc_CK9wOedt/view?usp=drive_link" class="cert-link" target="_blank">View Certificate</a>
+                </li>
+                <li>
+                    <b>Cisco Networking Academy</b> - Python Essentials 1 (Issued: Sep 2024)
+                    <a href="https://drive.google.com/file/d/1dIyWH-yLZIHH2gL7xSSev1-f4taLp7lm/view?usp=sharing" class="cert-link" target="_blank">View Certificate</a>
+                </li>
+                <li>Certificated on C - Language at Data Pro.</li>
+                <li>Certificated on Microsoft at Data Pro.</li>
+            </ul>
+        </div>
     </section>
 
     <footer id="contact">
