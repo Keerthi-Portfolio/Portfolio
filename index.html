@@ -12,7 +12,6 @@
     <style>
         /* --- Global Styles & Fonts --- */
         body {
-            /* Updated font */
             font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             margin: 0;
             padding: 0;
@@ -22,54 +21,103 @@
             scroll-behavior: smooth;
         }
 
-        /* --- Navigation Bar --- */
+        /* --- UPDATED Navigation Bar --- */
         nav {
-            background-color: #fff; /* Changed to white */
-            color: #333;
-            padding: 1rem 0;
+            background-color: #fff;
+            padding: 1rem 2rem; /* Added horizontal padding */
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            text-align: center;
-            /* Added shadow for depth */
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex; /* Use flexbox */
+            justify-content: flex-end; /* Align icon to the right */
+            align-items: center;
+            box-sizing: border-box; /* Include padding in width */
         }
 
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
+        /* --- NEW Hamburger Menu Icon --- */
+        .menu-toggle {
+            cursor: pointer;
+            z-index: 1002;
         }
 
-        nav ul li {
-            margin: 0 15px;
-        }
-
-        nav ul li a {
-            color: #333; /* Changed link color */
-            text-decoration: none;
-            font-weight: bold;
-            padding: 5px 10px;
-            border-radius: 5px;
+        .menu-toggle div {
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            margin: 5px 0;
             transition: all 0.3s ease;
         }
+        
+        /* --- NEW Overlay Menu --- */
+        #overlay-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(68, 88, 140, 0.98); /* Semi-transparent blue */
+            z-index: 1001;
+            
+            /* Hidden by default */
+            opacity: 0;
+            visibility: hidden;
+            
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
 
-        nav ul li a:hover {
-            background-color: #f0f0f0;
-            color: #4a69bd;
+        /* "Open" state for the overlay */
+        #overlay-menu.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #overlay-menu ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        #overlay-menu li {
+            margin: 2rem 0;
+        }
+
+        #overlay-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 2rem; /* Big, clear links */
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        #overlay-menu a:hover {
+            color: #f0f0f0;
+        }
+
+        /* --- NEW Close Button --- */
+        .close-btn {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 3rem;
+            color: #fff;
+            cursor: pointer;
+            text-decoration: none;
         }
 
         /* --- Header (Hero Section) --- */
         header {
-            /* Updated to a more vibrant gradient */
             background-color: #4a69bd;
             background-image: linear-gradient(45deg, #4a69bd 0%, #6f86d6 100%);
             color: #fff;
             text-align: center;
-            padding: 150px 20px 100px;
+            /* Added padding-top to account for the new nav bar height */
+            padding: 100px 20px 100px; 
             border-bottom: 5px solid #3c5aa6;
         }
 
@@ -77,12 +125,12 @@
             font-size: 3rem;
             margin: 0;
             font-weight: 700;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Added text shadow */
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
         header h2 {
             font-size: 1.5rem;
-            font-weight: 400; /* Changed from 300 */
+            font-weight: 400;
             margin-top: 10px;
             text-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
@@ -93,7 +141,6 @@
             font-size: 1.1rem;
         }
         
-        /* --- Profile Image Styling --- */
         .profile-image {
             width: 180px; 
             height: 180px;
@@ -104,21 +151,18 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
-        /* --- General Section Styling --- */
         section {
-            /* Increased padding for more space */
             padding: 80px 20px;
         }
 
         h2 {
             text-align: center;
             font-size: 2.5rem;
-            margin-bottom: 50px; /* Increased margin */
+            margin-bottom: 50px;
             color: #4a69bd;
             font-weight: 700;
         }
 
-        /* --- NEW Card Styling --- */
         .card {
             background: #ffffff;
             border-radius: 12px;
@@ -129,32 +173,36 @@
             transition: all 0.3s ease;
         }
 
-        /* NEW Card Hover Effect */
         .card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
         
-        /* --- Link Button Style --- */
         .btn-link {
             display: inline-block;
             background-color: #4a69bd;
             color: #fff;
-            padding: 10px 20px; /* Made button bigger */
+            padding: 10px 20px;
             text-decoration: none;
-            border-radius: 8px; /* Rounded corners */
+            border-radius: 8px;
             font-weight: bold;
             margin-top: 15px;
             transition: all 0.3s ease;
         }
         
+        header .btn-link {
+            background-color: #fff;
+            color: #4a69bd;
+            margin-top: 25px;
+        }
+        
         .btn-link:hover {
             background-color: #3c5aa6;
-            transform: translateY(-2px); /* Button hover effect */
+            color: #fff;
+            transform: translateY(-2px);
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
         
-        /* --- Certificate Link Style --- */
         .cert-link {
             font-size: 0.9em;
             font-weight: bold;
@@ -169,9 +217,8 @@
             color: #3c5aa6;
         }
 
-        /* --- Specific Section Styling --- */
         #skills .card {
-            padding-bottom: 2.5rem; /* More space inside card */
+            padding-bottom: 2.5rem;
         }
         
         #skills ul {
@@ -189,7 +236,7 @@
             border-radius: 20px;
             font-size: 1.1rem;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            font-weight: 500; /* Slightly bolder */
+            font-weight: 500;
         }
 
         #project h3 {
@@ -204,11 +251,10 @@
             margin: 0 auto;
         }
 
-        /* --- NEW Experience Grid Layout --- */
         .experience-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr; /* Two columns */
-            gap: 30px; /* Space between cards */
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
             max-width: 900px;
             margin: 0 auto;
         }
@@ -218,12 +264,12 @@
             color: #333;
             border-left: 4px solid #4a69bd;
             padding-left: 15px;
-            margin-top: 0; /* Removed top margin */
+            margin-top: 0;
             margin-bottom: 20px;
         }
         
         #experience .card {
-            width: auto; /* Let grid control width */
+            width: auto;
             margin: 0;
         }
 
@@ -233,16 +279,15 @@
         }
 
         #certifications li {
-            margin-bottom: 15px; /* Increased spacing */
+            margin-bottom: 15px;
             font-size: 1.1rem;
         }
 
-        /* --- Footer (Contact Section) --- */
         footer {
             background-color: #333;
             color: #fff;
             text-align: center;
-            padding: 60px 20px; /* Increased padding */
+            padding: 60px 20px;
         }
 
         footer h2 {
@@ -268,20 +313,15 @@
 
         /* --- Responsive Design for Mobile Devices --- */
         @media (max-width: 768px) {
-            /* Stack the grid columns on mobile */
             .experience-grid {
                 grid-template-columns: 1fr;
             }
         }
 
         @media (max-width: 600px) {
+            /* No more complex header padding fix needed! */
             header h1 {
                 font-size: 2.5rem;
-            }
-
-            nav ul {
-                flex-direction: column;
-                gap: 10px;
             }
             
             h2 {
@@ -293,6 +333,15 @@
 <body>
 
     <nav>
+        <div class="menu-toggle" id="menu-toggle">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </nav>
+
+    <div id="overlay-menu">
+        <a href="#" class="close-btn" id="close-btn">&times;</a>
         <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#skills">Skills</a></li>
@@ -300,13 +349,19 @@
             <li><a href="#experience">Experience & Education</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
-    </nav>
+    </div>
+
 
     <header id="home">
         <h1>Keerthi Sri Pedapudi</h1>
         <img src="WhatsApp Image 2025-11-07 at 13.57.45.jpeg" alt="Keerthi Sri Pedapudi" class="profile-image">
         <h2>Computer Science Engineer</h2>
         <p>To obtain a challenging position in a reputable organization where I can utilize my skills, learn continuously, and contribute to the success of the team while growing professionally.</p>
+        
+        <div>
+            <a href="https://drive.google.com/file/d/1RED4iKtwvZxR8UdxgQOfKWjc7KBEVeCL/view?usp=sharing" class="btn-link" target="_blank">View Resume</a>
+        </div>
+        
     </header>
 
     <section id="skills">
@@ -348,7 +403,7 @@
                     Completed an internship on <b>"Web Development"</b>. Gained hands-on experience in designing and developing responsive web applications using HTML, with a focus on user experience and performance optimization. Commended for being "extremely inquisitive and hardworking."
                     
                     <br>
-                    <a href="https://drive.google.com/file/d/1Uqk-LNNgtxbsimmYj45D1VJIJeFGzauo/view?usp=drive_link" class="cert-link" target="_blank">View Internship Certificate</a>
+                    <a href="httpsg://drive.google.com/file/d/1Uqk-LNNgtxbsimmYj45D1VJIJeFGzauo/view?usp=drive_link" class="cert-link" target="_blank">View Internship Certificate</a>
                 </p>
             </div>
 
@@ -356,7 +411,7 @@
                 <h3>Academics</h3>
                 <p>
                     <b>B.Tech - Computer Science and Engineering</b> (Percentage: 60%, April 2025)<br>
-                    Rajamahendri Institute of Engineering & Technology (Afflicted by JNTU Kakinada)
+                    Rajamahendri Institute of Engineering & Technology (Affiliated by JNTU Kakinada)
                 </p>
                 <p>
                     <b>Intermediate - MPC</b> (Percentage: 69%, April 2021)<br>
@@ -381,7 +436,7 @@
                 </li>
                 <li>
                     <b>Cisco Networking Academy</b> - Python Essentials 1 (Issued: Sep 2024)
-                    <a href="https://drive.google.com/file/d/1dIyWH-yLZIHH2gL7xSSev1-f4taLp7lm/view?usp=sharing" class="cert-link" target="_blank">View Certificate</a>
+                    <a href="httpss://drive.google.com/file/d/1dIyWH-yLZIHH2gL7xSSev1-f4taLp7lm/view?usp=sharing" class="cert-link" target="_blank">View Certificate</a>
                 </li>
                 <li>Certificated on C - Language at Data Pro.</li>
                 <li>Certificated on Microsoft at Data Pro.</li>
@@ -398,13 +453,44 @@
 
 
     <script>
-        // This script adds smooth scrolling to the navigation links
+        // Get elements
+        const menuToggle = document.getElementById('menu-toggle');
+        const closeBtn = document.getElementById('close-btn');
+        const overlayMenu = document.getElementById('overlay-menu');
+        // Get all the links inside the overlay
+        const menuLinks = document.querySelectorAll('#overlay-menu a[href^="#"]');
+
+        // Function to open the menu
+        function openMenu() {
+            overlayMenu.classList.add('open');
+        }
+
+        // Function to close the menu
+        function closeMenu() {
+            overlayMenu.classList.remove('open');
+        }
+
+        // Event listener for hamburger icon
+        menuToggle.addEventListener('click', openMenu);
+
+        // Event listener for close button
+        closeBtn.addEventListener('click', closeMenu);
+
+        // Event listeners for all menu links
+        // This makes the menu close when you click a link
+        menuLinks.forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        // This script is for the smooth scrolling
         document.addEventListener("DOMContentLoaded", function() {
-            const navLinks = document.querySelectorAll('nav ul li a[href^="#"]');
+            const allLinks = document.querySelectorAll('a[href^="#"]');
             
-            for (const link of navLinks) {
+            for (const link of allLinks) {
                 link.addEventListener('click', function(e) {
+                    // Stop the default browser jump
                     e.preventDefault();
+                    
                     const targetId = this.getAttribute('href');
                     const targetElement = document.querySelector(targetId);
                     
